@@ -11,11 +11,13 @@ public class Raycast : MonoBehaviour
     {
         _ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+
         if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(_ray, out hit, Mathf.Infinity))
             {
                 GameObject objectHit = hit.transform.gameObject;
+
                 if (objectHit.TryGetComponent<Cube>(out var i))
                 {
                     Debug.Log(i);

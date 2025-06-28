@@ -11,6 +11,7 @@ public class Destroyer : MonoBehaviour
     {
         _raycast.OnCubeHit += DestroyCube;
     }
+
     private void OnDisable()
     {
         _raycast.OnCubeHit -= DestroyCube;

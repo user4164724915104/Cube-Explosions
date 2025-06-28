@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour
         {
             List<Rigidbody> _cubes = new();
             int random = Random.Range(2, 6);
+
             for (int i = 0; i < random; i++)
             {
                 GameObject newCube = Instantiate(_CubePrefab);
@@ -20,9 +21,9 @@ public class Spawner : MonoBehaviour
                 newCube.GetComponentInChildren<Renderer>().material.color = Random.ColorHSV();
                 _cubes.Add(newCube.GetComponent<Rigidbody>());
             }
+
             return _cubes;
-        } else
-        {
+        } else {
             return null;
         }
     }
