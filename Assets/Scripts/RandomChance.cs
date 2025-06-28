@@ -2,21 +2,12 @@ using UnityEngine;
 
 public class RandomChance : MonoBehaviour
 {
-    public float chance;
-
-    public bool Random()
+    public bool Random(float chance)
     {
         float rand = UnityEngine.Random.Range(0, 100);
         Debug.Log(chance + "шанс");
         Debug.Log(rand + "рандом");
 
-        if (rand <= chance)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return rand <= chance;
     }
 }
