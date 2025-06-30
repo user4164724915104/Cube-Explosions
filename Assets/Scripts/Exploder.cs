@@ -1,16 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Exploding : MonoBehaviour
+public class Exploder : MonoBehaviour
 {
     [SerializeField] private float _explosionForse;
     [SerializeField] private float _explosionRadius;
 
-    public void Explode(List<Rigidbody> _newCubes, Vector3 position)
+    public void Explode(List<Rigidbody> newCubes, Vector3 position)
     {
-        if (_newCubes != null)
+        if (newCubes != null)
         {
-            foreach (Rigidbody rigidbody in _newCubes)
+            foreach (Rigidbody rigidbody in newCubes)
             {
                 rigidbody.AddExplosionForce(_explosionForse, position, _explosionRadius);
             }

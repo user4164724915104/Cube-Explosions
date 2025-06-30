@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Destroyer : MonoBehaviour
+public class Main : MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
     [SerializeField] private RandomChance _randomChance;
-    [SerializeField] private Exploding _exploding;
+    [SerializeField] private Exploder _exploding;
     [SerializeField] private Raycast _raycast;
 
     private void OnEnable()
@@ -21,9 +21,9 @@ public class Destroyer : MonoBehaviour
     {
         _exploding.Explode(
             _spawner.SpawnCubes(
-                _randomChance.Random(cube.GetComponent<Cube>().chance),
+                _randomChance.Random(cube.GetComponent<Cube>().Chance),
                 cube.transform.localScale,
-                cube.GetComponent<Cube>().chance,
+                cube.GetComponent<Cube>().Chance,
                 cube.transform.position),
             cube.transform.position);
         Destroy(cube);
