@@ -15,7 +15,16 @@ public class Spawner : MonoBehaviour
             for (int i = 0; i < random; i++)
             {
                 GameObject newCube = Instantiate(_cubePrefab);
-                newCube.GetComponent<Cube>().Chance = chance / 2;
+
+                if (newCube.TryGetComponent<Cube>(out var j))
+                {
+                    newCube.GetComponent<Cube>().Chance = chance / 2;
+                }
+                else
+                {
+                    return null;
+                }
+
                 newCube.GetComponent<Rigidbody>().transform.localScale = scale / 2;
                 newCube.GetComponent<Transform>().localPosition = position;
                 newCube.GetComponent<Renderer>().material.color = Random.ColorHSV();

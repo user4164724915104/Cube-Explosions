@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Main : MonoBehaviour
+public class CubeExplosionsMain : MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
     [SerializeField] private RandomChance _randomChance;
@@ -9,15 +9,15 @@ public class Main : MonoBehaviour
 
     private void OnEnable()
     {
-        _raycast.OnCubeHit += DestroyCube;
+        _raycast.OnCubeHit += InitializationExplode;
     }
 
     private void OnDisable()
     {
-        _raycast.OnCubeHit -= DestroyCube;
+        _raycast.OnCubeHit -= InitializationExplode;
     }
 
-    private void DestroyCube(GameObject cube)
+    private void InitializationExplode(GameObject cube)
     {
         _exploding.Explode(
             _spawner.SpawnCubes(
