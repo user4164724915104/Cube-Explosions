@@ -4,6 +4,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject _cubePrefab;
+    private int _half = 2;
 
     public List<Rigidbody> SpawnCubes(bool isValid, Vector3 scale, float chance, Vector3 position)
     {
@@ -18,14 +19,14 @@ public class Spawner : MonoBehaviour
 
                 if (newCube.TryGetComponent<Cube>(out var j))
                 {
-                    newCube.GetComponent<Cube>().Chance = chance / 2;
+                    newCube.GetComponent<Cube>().Chance = chance / _half;
                 }
                 else
                 {
                     return null;
                 }
 
-                newCube.GetComponent<Rigidbody>().transform.localScale = scale / 2;
+                newCube.transform.localScale = scale / _half;
                 newCube.GetComponent<Transform>().localPosition = position;
                 newCube.GetComponent<Renderer>().material.color = Random.ColorHSV();
                 cubes.Add(newCube.GetComponent<Rigidbody>());

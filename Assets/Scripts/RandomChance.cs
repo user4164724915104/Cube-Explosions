@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class RandomChance : MonoBehaviour
 {
+    private int _percentMinValue = 0, _percentMaxValue = 100;
+
     public bool Random(float chance)
     {
-        float rand = UnityEngine.Random.Range(0, 100);
-        Debug.Log(chance + "шанс");
-        Debug.Log(rand + "рандом");
+        float randomChance = UnityEngine.Random.Range(_percentMinValue, _percentMaxValue);
 
-        return rand <= chance;
+        return randomChance <= chance;
     }
 }

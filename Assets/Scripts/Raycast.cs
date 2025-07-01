@@ -20,7 +20,6 @@ public class Raycast : MonoBehaviour
 
                 if (objectHit.TryGetComponent<Cube>(out var i))
                 {
-                    Debug.Log(i);
                     OnCubeHit?.Invoke(objectHit);
                 }
             }
