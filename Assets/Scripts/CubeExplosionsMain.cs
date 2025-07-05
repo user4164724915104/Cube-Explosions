@@ -19,13 +19,15 @@ public class CubeExplosionsMain : MonoBehaviour
 
     private void InitializationExplode(GameObject cube)
     {
-        _exploding.Explode(
-            _spawner.SpawnCubes(
-                _randomChance.Random(cube.GetComponent<Cube>().Chance),
-                cube.transform.localScale,
-                cube.GetComponent<Cube>().Chance,
-                cube.transform.position),
-            cube.transform.position);
+        if (_randomChance.Random(cube.GetComponent<Cube>().Chance))
+        {
+            _exploding.Explode(
+                _spawner.SpawnCubes(
+                    cube.transform.localScale,
+                    cube.GetComponent<Cube>().Chance,
+                    cube.transform.position),
+                cube.transform.position);
+        }
         Destroy(cube);
     }
 }

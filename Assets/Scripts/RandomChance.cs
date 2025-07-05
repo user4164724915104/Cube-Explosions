@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class RandomChance : MonoBehaviour
 {
-    private int _percentMinValue = 0, _percentMaxValue = 100;
+    private int _percentMinValue = 0;
+    private int _percentMaxValue = 100;
 
     public bool Random(float chance)
     {
