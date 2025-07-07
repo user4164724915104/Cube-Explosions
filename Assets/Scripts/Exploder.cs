@@ -6,13 +6,13 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _explosionForse;
     [SerializeField] private float _explosionRadius;
 
-    public void Explode(List<Rigidbody> newCubes, Vector3 position)
+    public void Explode(List<Cube> objects, Vector3 position)
     {
-        if (newCubes != null)
+        if (objects != null)
         {
-            foreach (Rigidbody rigidbody in newCubes)
+            foreach (Cube rigidbody in objects)
             {
-                rigidbody.AddExplosionForce(_explosionForse, position, _explosionRadius);
+                rigidbody.Rigidbody.AddExplosionForce(_explosionForse, position, _explosionRadius);
             }
         }
     }

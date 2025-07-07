@@ -17,17 +17,17 @@ public class CubeExplosionsMain : MonoBehaviour
         _raycast.OnCubeHit -= InitializationExplode;
     }
 
-    private void InitializationExplode(GameObject cube)
+    private void InitializationExplode(Cube cube)
     {
-        if (_randomChance.Random(cube.GetComponent<Cube>().Chance))
+        if (_randomChance.Random(cube.Chance))
         {
             _exploding.Explode(
                 _spawner.SpawnCubes(
                     cube.transform.localScale,
-                    cube.GetComponent<Cube>().Chance,
+                    cube.Chance,
                     cube.transform.position),
                 cube.transform.position);
         }
-        Destroy(cube);
+        Destroy(cube.gameObject);
     }
 }

@@ -5,7 +5,7 @@ public class Raycast : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private Ray _ray;
-    public event Action<GameObject> OnCubeHit;
+    public event Action<Cube> OnCubeHit;
 
     private void Update()
     {
@@ -16,10 +16,9 @@ public class Raycast : MonoBehaviour
         {
             if (Physics.Raycast(_ray, out hit, Mathf.Infinity))
             {
-                GameObject objectHit = hit.transform.gameObject;
-
-                if (objectHit.TryGetComponent<Cube>(out var i))
+                if (hit.transform.gameObject.TryGetComponent<Cube>(out var cube))
                 {
+                    Cube objectHit = hit.transform.gameObject.GetComponent<Cube>();
                     OnCubeHit?.Invoke(objectHit);
                 }
             }
