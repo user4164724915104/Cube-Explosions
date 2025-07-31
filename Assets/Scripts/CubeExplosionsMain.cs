@@ -6,6 +6,8 @@ public class CubeExplosionsMain : MonoBehaviour
     [SerializeField] private RandomChance _randomChance;
     [SerializeField] private Exploder _exploding;
     [SerializeField] private Raycast _raycast;
+    private Vector3 _initialScale;
+    private bool _isFirstClick = false;
 
     private void OnEnable()
     {
@@ -19,15 +21,26 @@ public class CubeExplosionsMain : MonoBehaviour
 
     private void InitializationExplode(Cube cube)
     {
+        if (!_isFirstClick)
+        {
+            _initialScale = cube.transform.localScale;
+            _isFirstClick = true;
+        }
+
+        Destroy(cube.gameObject);
+
         if (_randomChance.Random(cube.Chance))
         {
-            _exploding.Explode(
+            _exploding.SpawnExplode(
                 _spawner.SpawnCubes(
                     cube.transform.localScale,
                     cube.Chance,
                     cube.transform.position),
                 cube.transform.position);
         }
-        Destroy(cube.gameObject);
+        else
+        {
+            _exploding.DestroyExplode(cube, _initialScale);
+        }
     }
 }
